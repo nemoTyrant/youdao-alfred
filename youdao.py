@@ -42,8 +42,6 @@ def wrap_title(title, length = 58):
     utf8len = len(title.encode('utf-8'))
     l = len(title)
     chineseCount = (utf8len - l) / 2
-    # print(ratio)
-    # print(chineseCount)
     length = length - chineseCount
 
     l = textwrap.wrap(title, length)
@@ -68,8 +66,9 @@ def get_data(word):
     if(res.status_code != 200):
         return [{"title": u"网页无法打开", "subtitle": ""}]
     else:
-        soup = BeautifulSoup(res.text, "html.parser")
-        res = soup.select("div#results-contents")[0]
+        # soup = BeautifulSoup(res.text, "html.parser")
+        # res = soup.select("div#results-contents")[0]   # 部分页面用这个之后英文释义找不到，所以下面直接全文解析
+        res = BeautifulSoup(res.text, "html.parser")
         if res.find("div", class_="error-wrapper"):
             return [{"title": u"词语不存在", "subtitle": ""}]
         else:
@@ -81,6 +80,7 @@ def get_data(word):
                 parent = p.find_parent()
                 pstring += strip_spaces(parent.text)
 
+
             # addition
             addition = res.select('#phrsListTab p.additional')
             if addition:
@@ -91,7 +91,6 @@ def get_data(word):
             # 中文释义
             chinese = res.select("#phrsListTab li");
             for m in chinese:
-                # data.append()
                 add_item(data, get_dict(m.string))
 
             # 英文释义
