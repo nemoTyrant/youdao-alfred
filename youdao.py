@@ -84,9 +84,9 @@ def get_data(word):
             # addition
             addition = res.select('#phrsListTab p.additional')
             if addition:
-                data.append(get_dict(pstring, strip_spaces(addition[0].string)))
+                data.append(get_dict(pstring, strip_spaces(addition[0].string), arg=word))
             elif pstring:
-                data.append(get_dict(pstring))
+                data.append(get_dict(pstring, arg=word))
 
             # 中文释义
             chinese = res.select("#phrsListTab li");
