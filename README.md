@@ -5,7 +5,8 @@
 ![](screen.png)
 
 # 用法
-如上图所示，`yd word`即可查词。`ydc`清除缓存
+如上图所示，`yd word`即可查词。`ydc`清除缓存  
+选中音标行回车可发音，默认美音，`cmd+enter`发英音。原本希望发音后仍能保留查词结果列表，但是由于alfred的机制限制，暂时无法做到。如有朋友知道在保留结果列表的基础上调用脚本，请不吝告知！
 
 # 用到的库
 [Alfred-workflow](https://github.com/deanishe/alfred-workflow/) python开发workflow的辅助库，极力推荐  
