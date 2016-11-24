@@ -146,8 +146,8 @@ def get_data(word):
 
 
 def get_results(wf, word):
-    # data = wf.cached_data(word, max_age=86400 * 20)
-    data = wf.cached_data(word, max_age=1)
+    data = wf.cached_data(word, max_age=86400 * 20)
+    # data = wf.cached_data(word, max_age=1)
     if data is None:
         data = get_data(word)
         wf.cache_data(word, data)
